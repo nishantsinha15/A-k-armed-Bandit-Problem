@@ -3,10 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-steps = 1000
-variance = 1
+steps = 100
+variance = 2
 k = 10
-iters = 2000
+iters = 200
 
 
 def estimate_q(q_old, reward, n):
@@ -229,5 +229,4 @@ def step_vs_absolute_error_epsilon_01():
         plt.plot(val, color=c)
     plt.show()
 
-step_vs_absolute_error_epsilon_1()
-step_vs_absolute_error_epsilon_01()
+steps_vs_average_reward()
