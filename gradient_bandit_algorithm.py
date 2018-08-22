@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import math
 
-steps = 1000
+steps = 100
 variance = 1
 mean = 4
 k = 10
@@ -56,7 +56,6 @@ class Gradient_Bandit:
             # updation of h
             h = self.update_using_baseline(h, greedy_action, actual_reward, sum_rewards, i )
             self.calculate_probability(h)
-
             # updating reward at this step
             self.reward[i] = actual_reward
 
@@ -73,15 +72,16 @@ def steps_vs_optimal_action():
 
     for run in range(iters):
         q_star = np.random.normal(mean, variance, k)
-
+        print(q_star)
         solution = Gradient_Bandit(q_star, 0.1)
         solution.solve()
 
         optimal_action_gradient = np.add(optimal_action_gradient, solution.get_correct_action_count())
 
-    optimal_action_gradient = np.divide(optimal_action_gradient, iters)
+    # optimal_action_gradient = np.divide(optimal_action_gradient, iters)
 
     plt.plot(optimal_action_gradient, 'r' )
-    plt.show()
+    # plt.show()
+    print(optimal_action_gradient)
 
 steps_vs_optimal_action()

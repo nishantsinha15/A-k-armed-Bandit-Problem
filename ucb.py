@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-#todo [bug] UCB is wrong
 
 steps = 1000
 variance = 1
@@ -18,10 +17,8 @@ def estimate_q(q_old, reward, n):
     q_new = (q_old + (1.0 / n) * (reward - q_old))
     return q_new
 
-
 def get_reward(q_star, action):
     return np.random.normal(q_star[action], variance)
-
 
 # Solves one k-arm bandit problem using epsilon-greedy approach
 class Epsilon_greedy:
@@ -179,6 +176,7 @@ def steps_vs_average_reward():
     avg_reward_ucb_4 = np.divide(avg_reward_ucb_4, iters)
     avg_reward_epsilon_1 = np.divide(avg_reward_epsilon_1, iters)
 
+    print(avg_reward_ucb_2)
     plt.plot(avg_reward_ucb_1, 'r', avg_reward_epsilon_1, 'b', avg_reward_ucb_2, 'g', avg_reward_ucb_4, 'y')
     plt.show()
 
